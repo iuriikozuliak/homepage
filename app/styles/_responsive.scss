@@ -1,0 +1,38 @@
+@for $i from 1 through 20 {
+    @media (max-width: 1200px - $i*10) {
+        body {
+            font-size: 14px - $i/4;
+        }
+    }
+}
+
+@for $i from 1 through 10 {
+    @media (max-width: $screenBreak - $i*10) {
+        body {
+            font-size: 9px - $i/4;
+        }
+    }
+}
+
+@media (max-width: $screenHideNav) {
+
+    .hidenav-block{
+
+        @include block-level();
+
+    }
+}
+
+@media (max-width: $screenBreak) {
+
+    .handheld-block {
+
+        @include block-level();
+
+    }
+
+    .pull-right-handheld{
+        float: right !important;
+        width:auto !important;
+    }
+}

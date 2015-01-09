@@ -1,0 +1,33 @@
+@import "icons/*.png";
+
+[class^="icon-"],
+[class*=" icon-"] {
+    width:auto;
+    line-height: inherit;
+    height:auto;
+
+    &:before {
+        content: '';
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &.icon-text-top:before {
+        vertical-align: text-top;
+    }
+}
+
+@each $title in github, facebook, linkedin, spotify, twitter, bar{
+    .icon-#{$title} {
+        &:before {
+            @include icons-sprite(icon-#{$title})
+        }
+        &:before {
+            height: icons-sprite-height(icon-#{$title});
+            width: icons-sprite-width(icon-#{$title});
+        }
+    }
+}

@@ -1,0 +1,154 @@
+//
+// Component animations
+// --------------------------------------------------
+
+.vyshyvanka{
+    @include transition(all 1s linear);
+    position: fixed;
+    z-index: 9999;
+    height: 100%;
+    width:26px;
+    right:0;
+    top:0;
+    background:url(../images/vyshyvanka-pattern.png) 100% 100% repeat-y;
+    background-color: #9f2729 ;
+}
+//.page:hover{
+//    .vyshyvanka{
+//        background-color: #1a9fab;
+//    }
+//}
+
+.fade {
+    opacity: 0;
+    @include transition(opacity .15s linear);
+    &.in {
+        opacity: 1;
+    }
+}
+
+.collapse {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    @include transition(height .35s ease);
+    &.in {
+        height: auto;
+    }
+}
+
+.page-leave, .page-enter {
+    @include transition(all .8s linear);
+}
+
+.transition-container {
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.page {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.page-toBottom {
+    -webkit-transform-origin: 50% 100%;
+    -webkit-animation: rotatePullBottom .5s both ease;
+    -moz-transform-origin: 50% 100%;
+    -moz-animation: rotatePullBottom .5s both ease;
+    transform-origin: 50% 100%;
+    animation: rotatePullBottom .5s both ease;
+}
+
+.page-toTop {
+    -webkit-transform-origin: 50% 0%;
+    -webkit-animation: rotatePushTop .8s both ease;
+    -moz-transform-origin: 50% 0%;
+    -moz-animation: rotatePushTop .8s both ease;
+    transform-origin: 50% 0%;
+    animation: rotatePushTop .8s both ease;
+
+
+}
+
+
+@-webkit-keyframes rotatePullTop {
+    from { opacity: 0; -webkit-transform: rotateX(-90deg); }
+}
+@-moz-keyframes rotatePullTop {
+    from { opacity: 0; -moz-transform: rotateX(-90deg); }
+}
+@keyframes rotatePullTop {
+    from { opacity: 0; transform: rotateX(-90deg); }
+}
+
+@-webkit-keyframes rotatePullBottom {
+    from { opacity: 0; -webkit-transform: rotateX(90deg); }
+}
+@-moz-keyframes rotatePullBottom {
+    from { opacity: 0; -moz-transform: rotateX(90deg); }
+}
+@keyframes rotatePullBottom {
+    from { opacity: 0; transform: rotateX(90deg); }
+}
+
+@-webkit-keyframes rotatePushTop {
+    to { opacity: 0; -webkit-transform: rotateX(-90deg); }
+}
+@-moz-keyframes rotatePushTop {
+    to { opacity: 0; -moz-transform: rotateX(-90deg); }
+}
+@keyframes rotatePushTop {
+    to { opacity: 0; transform: rotateX(-90deg); }
+}
+
+
+
+
+
+
+
+
+.floating{
+    -webkit-animation-name: Floatingx;
+    -webkit-animation-duration: 6s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: Floating;
+    -moz-animation-duration: 6s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -moz-transform-:rotateZ(-1deg);
+
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+}
+
+@-webkit-keyframes Floatingx{
+    from {-webkit-transform:translate(0, 0px) ;}
+    65% {-webkit-transform:translate(0, 15px);}
+    to {-webkit-transform: translate(0, -0px);    }
+}
+
+@-moz-keyframes Floating{
+    from {-moz-transform:translate(0, 0px) rotateZ(-1deg);}
+    25% {-moz-transform:translate(0, 20px) rotateZ(4deg);}
+    35% {-moz-transform:translate(0, 17px) rotateZ(4deg);}
+    50% {-moz-transform:translate(0, 27px) rotateZ(2deg);}
+    75% {-moz-transform:translate(0, -10px) rotateZ(-2deg);}
+    to {-moz-transform: translate(0, -0px) rotateZ(-1deg);}
+}

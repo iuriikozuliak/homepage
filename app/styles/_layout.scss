@@ -1,0 +1,62 @@
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
+@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700);
+
+.container {
+  @include container-fixed();
+}
+
+.container-fluid {
+  @include clearfix();
+
+  padding-right: $gridGutterWidth;
+  padding-left: $gridGutterWidth;
+}
+
+html {
+  overflow: hidden;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-size: 0.875em;
+  font-family: 'PTSerif';
+  color: $baseColor;
+  width: 100%;
+  background: $baseColor;
+}
+
+#content {
+  box-sizing: border-box;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 144px;
+  right: 0;
+  overflow: hidden;
+
+  @include respond-to(hideNav) {
+    left: 0;
+  }
+
+}
+
+.processing-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  left: -144px;
+  right: 0;
+
+  @include respond-to(hideNav) {
+    left: 0;
+  }
+}
+

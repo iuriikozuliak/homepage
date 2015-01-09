@@ -1,0 +1,206 @@
+.page {
+    @include box-sizing(border-box);
+
+    position: absolute;
+    left: 0;
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    background: $white ;
+
+    padding: 5em 5% 100px 8em;
+
+    & > *:last-child {
+        margin-bottom: 3em;
+    }
+
+    img.pull-left {
+        margin: 0 20px 20px 0;
+    }
+}
+
+.page-landing {
+    overflow: hidden;
+    padding-top: 7.5em;
+
+    .hello {
+    }
+
+    h1 {
+        margin-bottom: .2em;
+    }
+    h2 {
+        font-size: 26px;
+        margin: 0;
+    }
+
+    .hello {
+        font: 24px/1.5em Arvo;
+        text-transform: uppercase;
+    }
+
+    .overlay {
+        display: inline-block;
+        z-index: 1;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: -100%;
+            right: -20px;
+            top: -100%;
+            bottom: -100%;
+            background: rgba(255, 255, 255, .7);
+            z-index: -1;
+        }
+    }
+}
+
+.page-about {
+    aside {
+        float: left;
+        margin: 0 20px 0 0;
+        max-width: 333px;
+        width: 30%;
+        min-width: 220px;
+
+        @include respond-to(hideNav) {
+            min-width: 170px;
+        }
+
+        @include respond-to(handhelds) {
+            max-width: 100%;
+        }
+
+        img {
+            margin-bottom: 1.5em;
+        }
+
+        h5 {
+            padding-bottom: .5em;
+        }
+
+        .socials {
+
+            margin-top: -3px;
+            padding-bottom: 1em;
+
+            @include respond-to(hideNav) {
+                padding: 1.5em 0;
+                margin-top: .5em;
+            }
+
+            @include respond-to(handhelds) {
+                padding: 0 0 1em;
+                margin-top: -2px;
+            }
+
+            a {
+                margin-right: .5em;
+            }
+        }
+
+        p {
+            @include respond-to(hideNav) {
+                font-size: 13px;
+            }
+        }
+
+    }
+
+    .page-content {
+        overflow: hidden;
+        max-width: 500px;
+    }
+}
+
+.page-item{
+    @include clearfix();
+
+    max-width: 600px;
+    margin-bottom: 20px;
+
+    & > img.pull-left{
+        max-width: 190px;
+
+        @include respond-to(hideNav) {
+            max-width: 130px;
+        }
+
+        @include respond-to(handhelds) {
+            float:none ;
+            max-width: 100%;
+            width: auto ;
+            margin:0 auto ;
+            display: block;
+        }
+    }
+
+    p{
+        overflow: hidden;
+        padding: 2em 0 0 ;
+    }
+}
+
+.page-404 {
+    position: absolute;
+    width: 30em;
+    height: 20em;
+    left: 50%;
+    top: 50%;
+    margin-left: -18em;
+    margin-top: -15em;
+
+    .floating {
+        @include box-shadow(0 0 25px rgba(255, 255, 255, .5));
+
+        background: #fff;
+        width: 30em;
+        height: 15em;
+        padding: 5em;;
+    }
+}
+
+.breadcrumbs,
+.subheader,
+.page-item header {
+    margin-bottom: 0;
+    font: bold 2.286em Arvo;
+
+    @include respond-to(hideNav) {
+        font-size: 26px;
+    }
+
+    a, h3 {
+        display: inline-block;
+    }
+
+    & > a,
+    &> span {
+        font: bold .65em Arvo;
+        text-transform: uppercase;
+        color: $baseColor;
+        margin-right: .75em;
+    }
+
+    h3 a,
+    h3 {
+        font: bold 1em Arvo;
+        text-transform: uppercase;
+        color: $baseColor;
+    }
+    h3 {
+
+        a:hover{
+            text-decoration: underline !important;
+        }
+
+        &:before {
+            content: '/ ';
+            margin-left: -.5em;
+            position: absolute;
+            color: $orange;
+        }
+    }
+}
