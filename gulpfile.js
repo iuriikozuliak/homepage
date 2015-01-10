@@ -4,6 +4,16 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
+var assemble = require('gulp-assemble');
+var htmlmin = require('gulp-htmlmin');
+
+var options = {
+  layout:   'default',
+  //data:     ['site.yml', 'test/fixtures/data/*.{json,yml}'],
+  layouts:  ['app/templates/layouts/*.hbs'],
+  partials: ['app/temapltes/partials/*.hbs']
+};
+
 gulp.task('styles', function () {
   return gulp.src('app/styles/main.scss')
     .pipe($.plumber())
@@ -13,6 +23,13 @@ gulp.task('styles', function () {
     }))
     .pipe($.autoprefixer({browsers: ['last 1 version']}))
     .pipe(gulp.dest('.tmp/styles'));
+});
+
+gulp.task('assemble', function () {
+  gulp.src('app/templates/pages/*.hbs')
+    .pipe(assemble(options))
+    //.pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('.tmp/'));
 });
 
 gulp.task('jshint', function () {
@@ -67,7 +84,7 @@ gulp.task('extras', function () {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
-gulp.task('connect', ['styles'], function () {
+gulp.task('connect', ['assemble', 'styles'], function () {
   var serveStatic = require('serve-static');
   var serveIndex = require('serve-index');
   var app = require('connect')()

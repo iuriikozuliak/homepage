@@ -1,0 +1,160 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>mypage</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="../../../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+    <div class="navbar" ng-controller="NavCtrl">
+      <a class="icon-bar toggle-nav"></a>
+
+      <a class="logo" href="#/"></a>
+      <nav>
+        <ul>
+          <li><a href="#/">home</a></li>
+          <li><a href="#/about">about me</a></li>
+          <li><a href="#/work">blog</a></li>
+          <li><a href="#/labs">labs</a></li>
+          <li><a href="#/processing">processing</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section id="content" class="transition-container">
+
+      {% body %}
+      <!--<article class="page page-about">-->
+        <!--<h1>About me</h1>-->
+
+        <!--<h2 class="border-bottom">Hello. My name is Iurii Kozuliak and i’m <br>-->
+          <!--<strong>Front End Developer</strong> based in Wroclaw, Poland</h2>-->
+
+        <!--<aside class="handheld-block">-->
+          <!--<img src="/assets/images/fotoface-small.jpg" alt="me"/>-->
+          <!--<a href="#" class="pull-right hidenav-block pull-right-handheld"> Download CV</a>-->
+
+          <!--<div class="socials">-->
+            <!--<a class="icon-github" href="https://github.com/ikozuliak"></a>-->
+            <!--<a class="icon-facebook" href="https://www.facebook.com/iuriikozuliak"></a>-->
+            <!--<a class="icon-twitter" href="https://twitter.com/kadolya"></a>-->
+            <!--<a class="icon-linkedin" href="http://www.linkedin.com/profile/view?id=198932031&trk=tab_pro"></a>-->
+            <!--<a class="icon-spotify" href="#"></a>-->
+          <!--</div>-->
+          <!--<h5>Keywords:</h5>-->
+          <!--<p>-->
+            <!--W3C Standards & Accessibility, <br>-->
+            <!--HTML5/CSS3, SASS/Compass/LESS, <br>-->
+            <!--JavaScript/CoffeeScript, jQuery, <br>-->
+            <!--Photoshop, Grunt, Bower, Yeoman, <br>-->
+            <!--Progressive enhancement, <br>-->
+            <!--Cross browser compatibility, Responsiveness, <br>-->
+            <!--Web Design, <br>-->
+            <!--Git, SVN, Commang Line, <br>-->
+            <!--Wordpress, RESTful services. <br>-->
+          <!--</p>-->
+
+          <!--<h5>Free Time:</h5>-->
+          <!--<p>Traveling and exploring, guitars, photography, <br>-->
+            <!--sci-fi, learning languages.</p>-->
+        <!--</aside>-->
+        <!--<div class="page-content handheld-block">-->
+          <!--<p>-->
+            <!--I’m 23 year old ukrainian guy living and working in great city of Wroclaw.-->
+          <!--</p>-->
+
+          <!--<p>-->
+            <!--It all started back in 2006 when I created my first web page for my own local ISP. Since that time I-->
+            <!--have-->
+            <!--worked hard for a huge variety of clients, from small design studios to international companies all over-->
+            <!--the-->
+            <!--world.-->
+          <!--</p>-->
+
+          <!--<p>-->
+            <!--After graduating with Bachelor Degree in 2010 worked as a freelance web developer for a whole year.-->
+            <!--Starting-->
+            <!--to work, especially in low-budget segment, on russian freelance market could be a true nightmare, but I-->
+            <!--got-->
+            <!--excellent communication and problem solving skills. I worked on different projects from Facebook-->
+            <!--applications to large web sites for companies.-->
+            <!--For a few months even was in top 3 best developers on #2 largest russian online workplace.-->
+          <!--</p>-->
+
+          <!--<p>-->
+            <!--Also I got some experience of backend programming .-->
+            <!--Maybe I’m not an expert on it, but can work with full technology stack, and can either move closer-->
+            <!--toward-->
+            <!--the back-end or to the user interface.-->
+          <!--</p>-->
+
+          <!--<p>-->
+            <!--In july 2012 I graduated at the Ternopil National University with Master’s Degree, moved to Poland and-->
+            <!--started an Front End Developer at Clearcode. And now I can speak on 4 different languages, well, maybe-->
+            <!--my-->
+            <!--polish is not perfect, but I’m working on it.-->
+          <!--</p>-->
+
+          <!--<p>-->
+            <!--I’m enjoing the process of turning great design into precise layouts, write the code necessary for-->
+            <!--pixel-perfect UI/UX and bridging the gap between designers and developers.-->
+          <!--</p>-->
+
+          <!--<p>-->
+            <!--If you are interested in working with me or want to find out more about my work, feel free to-->
+            <!--<a href="mailto:i.kozuliak@gmail.com" >contact me</a>-->
+          <!--</p>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+      <!--</article>-->
+
+    </section>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="../../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="../../scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
