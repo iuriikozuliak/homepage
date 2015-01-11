@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <title>mypage</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- endbuild -->
+
+  <!-- build:js scripts/vendor/modernizr.js -->
+  <script src="../../../bower_components/modernizr/modernizr.js"></script>
+  <!-- endbuild -->
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+<div class="navbar" ng-controller="NavCtrl">
+  <a class="icon-bar toggle-nav"></a>
+
+  <a class="logo" href="#/"></a>
+  <nav>
+    <ul>
+      {{#each collections.pages }}
+        <li {{#is ../path this.path}} class="current" {{/is}} >
+          <a href="/{{this.path}}/">{{ title }}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </nav>
+</div>
+
+<section id="content" class="transition-container">
+  {{{ contents }}}
+</section>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+  (function (b, o, i, l, e, r) {
+    b.GoogleAnalyticsObject = l;
+    b[l] || (b[l] =
+            function () {
+              (b[l].q = b[l].q || []).push(arguments)
+            });
+    b[l].l = +new Date;
+    e = o.createElement(i);
+    r = o.getElementsByTagName(i)[0];
+    e.src = '//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e, r)
+  }(window, document, 'script', 'ga'));
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="../../../bower_components/jquery/dist/jquery.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/plugins.js -->
+<script src="../../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+<!-- endbuild -->
+
+<!-- build:js scripts/main.js -->
+<script src="../../scripts/main.js"></script>
+<!-- endbuild -->
+</body>
+</html>
