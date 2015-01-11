@@ -4,15 +4,63 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-var assemble = require('gulp-assemble');
-var htmlmin = require('gulp-htmlmin');
+var gulpsmith =     require('gulpsmith'),
+    templates =     require('metalsmith-templates'),
+    collections =   require('metalsmith-collections'),
+    permalinks =    require('metalsmith-permalinks'),
+    markdown =      require('metalsmith-markdown');
 
-var options = {
-  layout:   'default',
-  //data:     ['site.yml', 'test/fixtures/data/*.{json,yml}'],
-  layouts:  ['app/templates/layouts/*.hbs'],
-  partials: ['app/temapltes/partials/*.hbs']
-};
+var handlebars =  require('handlebars'),
+    rename =      require("gulp-rename"),
+    frontMatter = require('gulp-front-matter'),
+    assign =      require('lodash').assign;
+
+handlebars.registerHelper("debug", function(optionalValue) {
+  if (optionalValue) {
+    console.log("Value");
+    console.log("====================");
+    console.log(optionalValue);
+  }
+});
+
+handlebars.registerHelper("is", function (value, test, options) {
+  if (value === test) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
+gulp.task('metalsmith', function() {
+
+  gulp.src([
+    'app/src/content/**/*',
+  ])
+
+    .pipe( frontMatter() ).on('data', function(file) {
+      assign(file, file.frontMatter);
+      delete file.frontMatter;
+    })
+
+    .pipe(gulpsmith()
+      .use(collections({
+        pages: {
+          sortBy: 'date',
+          reverse: true
+        }
+      }))
+      .use(permalinks())
+      .use( templates({
+        engine:     'handlebars',
+        directory:  'app/src/templates'
+      }))
+    )
+    .pipe(rename(function (path) {
+      path.extname = ".html"
+    }))
+
+    .pipe( gulp.dest( '.tmp' ) );
+});
 
 gulp.task('styles', function () {
   return gulp.src('app/styles/main.scss')
@@ -23,13 +71,6 @@ gulp.task('styles', function () {
     }))
     .pipe($.autoprefixer({browsers: ['last 1 version']}))
     .pipe(gulp.dest('.tmp/styles'));
-});
-
-gulp.task('assemble', function () {
-  gulp.src('app/templates/pages/*.hbs')
-    .pipe(assemble(options))
-    //.pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('.tmp/'));
 });
 
 gulp.task('jshint', function () {
@@ -84,7 +125,7 @@ gulp.task('extras', function () {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
-gulp.task('connect', ['assemble', 'styles'], function () {
+gulp.task('connect', ['styles', 'metalsmith'], function () {
   var serveStatic = require('serve-static');
   var serveIndex = require('serve-index');
   var app = require('connect')()
@@ -116,7 +157,6 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest('app/styles'));
 
   gulp.src('app/*.html')
-    .pipe(wiredep({exclude: ['bootstrap-sass-official']}))
     .pipe(gulp.dest('app'));
 });
 
@@ -127,11 +167,13 @@ gulp.task('watch', ['connect'], function () {
   gulp.watch([
     'app/*.html',
     '.tmp/styles/**/*.css',
+    '.tmp/*.html',
     'app/scripts/**/*.js',
     'app/images/**/*'
   ]).on('change', $.livereload.changed);
 
   gulp.watch('app/styles/**/*.scss', ['styles']);
+  gulp.watch('app/src/**/*.hbs', ['metalsmith']);
   gulp.watch('bower.json', ['wiredep']);
 });
 
