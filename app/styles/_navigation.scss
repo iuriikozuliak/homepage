@@ -1,120 +1,120 @@
 .navbar {
-    background: $grayLighter;
-    text-align: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 144px;
-    z-index: 10;
-    margin-bottom:0;
+  background: $grayLighter;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 144px;
+  z-index: 10;
+  margin-bottom: 0;
 
-    .logo {
-        display: inline-block;
-        width: 50px;
-        margin-top: 1.5em;
-        height: 54px;
-        background: url(../images/logo.png) 0 0 no-repeat;
+  .logo {
+    display: inline-block;
+    width: 50px;
+    margin-top: 1.5em;
+    height: 54px;
+    background: url(../images/logo.png) 0 0 no-repeat;
+  }
+
+  nav {
+    margin-top: 12em;
+
+    li {
+      list-style: none;
+
+      &.current,
+      &:hover {
+        a {
+          color: $white;
+
+          &:after {
+            width: 100%;
+            @include opacity(100);
+          }
+        }
+      }
+
+      a {
+        @include transition(color .4s cubic-bezier(0.895, 0.030, 0.685, 0.220));
+
+        text-align: left;
+        font: bold 14px Arvo;
+        display: block;
+        padding: .9em 2em .8em;
+        text-decoration: none;
+        color: $baseColor;
+        position: relative;
+        z-index: 1;
+
+        &:after {
+          @include transition(width .4s cubic-bezier(0.895, 0.030, 0.685, 0.220), opacity .4s linear);
+          @include opacity(0);
+
+          content: '';
+          background: $baseColor;
+          display: block;
+          width: 0;
+          top: 0;
+          bottom: 0;
+          position: absolute;
+          left: 0;
+          z-index: -1;
+        }
+      }
     }
+  }
+
+  @include respond-to(hideNav) {
+    left: -144px;
 
     nav {
-        margin-top: 12em;
-
-        li {
-            list-style: none;
-
-            &.current,
-            &:hover {
-                a {
-                    color: $white;
-
-                    &:after {
-                        width: 100%;
-                        @include opacity(100);
-                    }
-                }
-            }
-
-            a {
-                @include transition(color .4s cubic-bezier(0.895, 0.030, 0.685, 0.220));
-
-                text-align: left;
-                font: bold 14px Arvo;
-                display: block;
-                padding: .9em 2em .8em;
-                text-decoration: none;
-                color: $baseColor;
-                position: relative;
-                z-index: 1;
-
-                &:after {
-                    @include transition(width .4s cubic-bezier(0.895, 0.030, 0.685, 0.220), opacity .4s linear);
-                    @include opacity(0);
-
-                    content: '';
-                    background: $baseColor;
-                    display: block;
-                    width: 0;
-                    top: 0;
-                    bottom: 0;
-                    position: absolute;
-                    left: 0;
-                    z-index: -1;
-                }
-            }
-        }
+      margin-top: 0em;
     }
-
-    @include respond-to(hideNav) {
-        left: -144px;
-
-        nav{
-            margin-top:0em;
-        }
-    }
+  }
 }
 
 .toggle-nav {
-    display: none;
-    cursor: pointer;
+  display: none;
+  cursor: pointer;
 
-    &:active{
-        margin-top: 1px;
+  &:active {
+    margin-top: 1px;
+  }
+
+  @include respond-to(hideNav) {
+    display: block;
+    position: absolute;
+    right: -45px;
+    top: 20px;
+    z-index: 999;
+
+    .sidebar-opened & {
+      left: 29px;
+      right: auto;
     }
-
-    @include respond-to(hideNav) {
-        display: block;
-        position: absolute;
-        right: -45px;
-        top: 20px;
-        z-index: 999;
-
-        .sidebar-opened &{
-            left:29px;
-            right:auto;
-        }
-    }
+  }
 }
 
 .sidebar-opened {
 
-    @include respond-to(hideNav) {
-        .navbar {
-            left: 0;
-            left: 0;
-            top:0;
-            width:100%;
-            bottom:auto;
-            height:auto;
-            right:0;
-        }
+  @include respond-to(hideNav) {
+    .navbar {
+      left: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+      bottom: auto;
+      height: auto;
+      right: 0;
     }
+  }
 }
 
 .tip {
-    position: absolute;
+  position: absolute;
 
-    &.right-border{
-        right:0;
-    }
+  &.right-border {
+    right: 0;
+  }
 }
