@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-  <title>mypage</title>
+  <title>Iurii Kozuliak | Senior Front End Developer</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- build:css styles/vendor.css -->
@@ -26,19 +26,26 @@
   your browser</a> to improve your experience.</p>
 <![endif]-->
 
-
 <div class="navbar" ng-controller="NavCtrl">
   <a class="icon-bar toggle-nav"></a>
 
   <a class="logo" href="#/"></a>
 
-  <nav>
+  <!-- <nav>
     <ul>
       {{#each collections.pages }}
         <li {{#is ../path this.path}} class="current" {{/is}} >
           <a href="/{{this.path}}/">{{ title }}</a>
         </li>
       {{/each}}
+    </ul>
+  </nav> -->
+
+  <nav>
+    <ul>
+      <li  class="current" >
+        <a href="/">About me</a>
+      </li>
     </ul>
   </nav>
 </div>
