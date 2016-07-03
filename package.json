@@ -1,5 +1,10 @@
 {
   "private": true,
+  "scripts": {
+    "build": "gulp html",
+    "deploy": "cd dist && git add --all && git commit -m \"Update on $(date)\" && git push",
+    "publish": "npm run build && npm run deploy"
+  },
   "engines": {
     "node": ">=0.10.0"
   },

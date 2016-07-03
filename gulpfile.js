@@ -158,6 +158,7 @@ gulp.task('fonts', function () {
 gulp.task('extras', function () {
   return gulp.src([
     'app/*.*',
+    'app/assets/*.*',
     '!app/*.html',
     'app/.htaccess'
   ], {
