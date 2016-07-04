@@ -305,7 +305,7 @@ html {
 
 // Focus states
 a:focus {
-    @include tab-focus();
+    // @include tab-focus();
 }
 
 // Hover & Active
@@ -405,7 +405,8 @@ input[type="checkbox"] {
 
 input[type="search"] {
     // Appearance in Safari/Chrome
-    @include box-sizing(content-box);
+    // @include box-sizing(content-box);
+    box-sizing: border-box;
     -webkit-appearance: textfield;
 }
 

@@ -1,7 +1,7 @@
 $icon-font-path: '../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/';
 
 //// bower:scss
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 //@import "compass";
@@ -26,9 +26,9 @@ $icon-font-path: '../bower_components/bootstrap-sass-official/assets/fonts/boots
 //@import "dropdowns";
 
 // Components: common
-@import "buttons";
+// @import "buttons";
 @import "typography";
-//@import "sprites";
+@import "sprites";
 @import "lib-animations";
 @import "component-animations";
 
